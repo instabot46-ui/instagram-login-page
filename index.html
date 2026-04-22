@@ -344,6 +344,13 @@
         display: none;
       }
 
+      .input-wrap label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: calc(100% - 32px);
+      }
+
       .right {
         width: 100%;
         min-height: 100vh;
@@ -634,7 +641,18 @@
     }
 
     // Optional: demo feedback for other buttons (preserves original behavior)
+    // Change placeholder text on mobile
+    function updatePlaceholder() {
+      const label = document.querySelector('label[for="email"]');
+      if (window.innerWidth <= 820) {
+        label.textContent = "Username, email address or mobile number";
+      } else {
+        label.textContent = "Mobile number, username or email";
+      }
+    }
 
+    updatePlaceholder();
+    window.addEventListener('resize', updatePlaceholder);
   </script>
 </body>
 
